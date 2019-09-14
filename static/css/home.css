@@ -1,0 +1,87 @@
+body {
+    margin: 0px;
+    text-align: center;
+}
+
+.title {
+    color: white;
+    font-size: 40px;
+}
+
+.banner {
+    text-align: center;
+    padding: 10px 20px;
+    background: #f12711; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #f12711, #f5af19); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #f12711, #f5af19);
+}
+
+.body-container {
+    text-align: center;
+
+}
+
+.body-title {
+    font-size: 30px;
+}
+
+.form-list {
+    margin: 0px auto;
+    display: inline-flex;
+    flex-direction: column;
+    min-height: 50px;
+    min-width: 100px;
+    width: 70%;
+    padding:20px;
+    justify-content: center;
+    text-align: center;
+}
+
+.text-input, .submit-input {
+    margin: 15px;
+}
+
+.submit-input {
+    width: 50%;
+    min-width: 100px;
+    margin: 0 auto;
+
+    font-size: 20px;
+    color: white;
+    /* background: #9cecfb;
+    background: -webkit-linear-gradient(to bottom, #9cecfb, #65c7f7, #0052d4);
+    background: linear-gradient(to bottom, #9cecfb, #65c7f7, #0052d4); */
+    background: linear-gradient( to top, #004275, #0098da) ;
+
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.text-input {
+    border: 2px solid #0098DA;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 25px;
+    margin-top: 5px;
+}
+
+.output {
+    width: 80%;
+    min-width: 200px;
+    background: #FDF6E3;
+    border: 1px solid #aaa;
+    height: 400px;
+    margin: 0 auto !important;
+}
+
+#label {
+    padding-top: 10px;
+    justify-self: left;
+    margin-bottom: 0px;
+}
+
+#output-label {
+    text-align: left;
+    margin-left: 10px;
+    margin-top: 5px;
+}
