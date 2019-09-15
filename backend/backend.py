@@ -23,12 +23,16 @@ def classify_texts(texts):
 
     texts = texts.split(".")[:-1]
 
+    rating_map = {"neither": "green", "offensive_language": "orange", "hate_speech": "red"}
+
     sonar = Sonar()
     results = []
-    for i, text in enumerate(texts):
-        results.append(sonar.ping(text=text)["top_class"])
+    for i, sentence in enumerate(texts):
+        sentence_res = sonar.ping(text=sentence)
+        top_class = sentence_res["top_class"]
+        sentence_output = {"index": i+1, "sentence": sentence, "top_class": top_class, "rating": rating_map[top_class]}
+        results.append(sentence_output)
 
-    print(results)
     return results
 
 
@@ -61,4 +65,5 @@ def process_video():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.debug = True
+    app.run(host='0.0.0.0')
