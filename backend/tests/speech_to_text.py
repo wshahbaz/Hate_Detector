@@ -12,6 +12,7 @@ def speech_recognize_continuous_from_file(filename, speech_key, service_region):
     speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_config)
 
     done = False
+    text = []
 
     def stop_cb(evt):
         """callback that stops continuous recognition upon receiving an event `evt`"""
@@ -19,10 +20,13 @@ def speech_recognize_continuous_from_file(filename, speech_key, service_region):
         speech_recognizer.stop_continuous_recognition()
         nonlocal done
         done = True
+    def speech_recognized(evt):
+        print('RECOGNIZED: {}'.format(evt))
+        text.append(evt.result.text)
+        
 
     # Connect callbacks to the events fired by the speech recognizer
-    # speech_recognizer.recognizing.connect(lambda evt: print('RECOGNIZING: {}'.format(evt)))
-    speech_recognizer.recognized.connect(lambda evt: print('RECOGNIZED: {}'.format(evt)))
+    speech_recognizer.recognized.connect(speech_recognized)
     speech_recognizer.session_started.connect(lambda evt: print('SESSION STARTED: {}'.format(evt)))
     speech_recognizer.session_stopped.connect(lambda evt: print('SESSION STOPPED {}'.format(evt)))
     speech_recognizer.canceled.connect(lambda evt: print('CANCELED {}'.format(evt)))
@@ -34,7 +38,8 @@ def speech_recognize_continuous_from_file(filename, speech_key, service_region):
     speech_recognizer.start_continuous_recognition()
     while not done:
         time.sleep(.5)
-
+    
+    print(" ".join(filter((lambda sentences: sentences != ""), text)))
 
 if __name__ == '__main__':
     filename = 'sample_speech.wav'
