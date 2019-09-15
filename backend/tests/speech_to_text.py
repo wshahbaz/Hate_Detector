@@ -1,5 +1,4 @@
 import azure.cognitiveservices.speech as speechsdk
-
 import time
 
 

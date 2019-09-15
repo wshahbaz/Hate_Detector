@@ -8,7 +8,7 @@ def home():
 
 @app.route("/contributors")
 def contributors():
-    return render_template("contributors.html")
-    
+    return render_template("contributors.html") 
+
 if __name__ == "__main__":
     app.run(debug=True)
