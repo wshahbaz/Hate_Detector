@@ -97,9 +97,10 @@ def process_video():
     """
     Extract audio -> audio to text -> text to classification -> send to front end
     """
-    # file_path = video_to_audio("/path/to/file")
-    # texts = speech_to_text(file_path)
-    # dummy texts
+
+    file_path = video_to_audio("/path/to/file")
+    texts = speech_to_text(file_path)
+    
     texts = "Pedophiles are immature assholes. \
             I still use Internet Explorer. \
             I hope your baby’s retarded. \
@@ -112,4 +113,4 @@ def process_video():
 
 if __name__ == '__main__':
     app.debug = True
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', port=5000)
