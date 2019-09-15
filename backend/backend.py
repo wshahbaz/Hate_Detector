@@ -98,8 +98,8 @@ def process_video():
     Extract audio -> audio to text -> text to classification -> send to front end
     """
 
-    file_path = video_to_audio("/path/to/file")
-    texts = speech_to_text(file_path)
+    # file_path = video_to_audio("/path/to/file")
+    # texts = speech_to_text(file_path)
     
     texts = "Pedophiles are immature assholes. \
             I still use Internet Explorer. \

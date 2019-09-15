@@ -18,46 +18,20 @@ def contributors():
 
 @app.route("/upload", methods=["POST"])
 def upload():
-    target = os.path.join(APP_ROOT, "images/")
-    print(target)
-
-    if not os.path.isdir(target):
-        os.mkdir(target)
-
-    for file in request.files.getlist("file"):
-        print(file)
-        filename = file.filename
-        destination = "/".join([target, filename])
-        print(destination)
-        file.save(destination)
-
     #api processing portion
-    API_URL = "https://hate-detector.azurewebsites.net/video"
+    # API_URL = "https://hate-detector.azurewebsites.net/video"
+    api_root = "http://192.168.181.137:5000"
+
+    video_url = api_root + '/video'
+
     headers = {}
-    response = requests.get('{}/files'.format(API_URL), headers=headers)
-    ids = response["results"]
+    response = requests.get(video_url, headers=headers)
+
+    print(response)
+
+    # ids = response["results"]
     
     ids = map(lambda sentence : sentence["id"], response["results"])
-    # sentences = map(lambda sentence : sentence["sentence"], data["response"])
-    # names = map(lambda sentence : sentence["name"], data["response"])
-    # values = map(lambda sentence : sentence["value"], data["response"])
-    # ratings = map(lambda sentence : sentence["rating"], data["response"])
-    # numItems = 0
-    # if (data["response"] and len(data["response"]) > 0):
-    #     numItems = len(data["response"])
-
-    # sum = 0
-    # overall_rating = 0
-    # for sentence in data["response"]:
-    #     sum += sentence["value"]
-    # avg = 1.0 * sum / len(data["response"])
-
-    # if (avg < 33):
-    #     overall_rating = "greenBack"
-    # elif (avg < 67):
-    #     overall_rating = "orangeBack"
-    # else:
-    #     overall_rating = "redBack"
 
     return render_template(
         "home.html", 

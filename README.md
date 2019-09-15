@@ -14,4 +14,13 @@ Team members:
 
 ## Resources
 
+## Azure deployment instructions
 
+
+Login to Azure shell and execute the following commands
+
+az configure --defaults group=sgamage2_rg_Linux_centralus
+
+
+
+az webapp config set --resource-group sgamage2_rg_Linux_centralus --name hate-detector --startup-file "gunicorn --bind=0.0.0.0 --timeout 600 --chdir backend hello:backend"
