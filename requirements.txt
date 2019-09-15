@@ -1,0 +1,9 @@
+click==6.7
+Flask==1.0.2
+itsdangerous==0.24
+Jinja2==2.10
+MarkupSafe==1.0
+Werkzeug==0.14.1
+hatesonar==0.0.4
+azure-cognitiveservices-speech==1.6.0
+moviepy==1.0.0
