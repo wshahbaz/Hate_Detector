@@ -16,20 +16,36 @@
   </div>
   <div class="body-container">
       
-      <form class="form-list" id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
-          <p class="body-title"> Link the File! </p>
-          <div class="center">
-            <div>
-                <label id="label"for="team_name">Select Your Video! </label>
-            </div class="buttons">
+      <!-- <form class="form-list" id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data"> -->
+          <!-- <p class="body-title"> Link the File! </p> -->
+          <!-- <div class="center"> -->
+            <!-- <div> -->
+                <!-- <label id="label"for="team_name">Select Your Video! </label> -->
+            <!-- </div class="buttons"> -->
             
               <!-- <input type="file" class="choose-file"accept=["video/*"] value="Select a Video!" /> -->
 
-              <input type="text" name="text" value="Your text paragraph here. Para 2. Para 3.">
+              <!-- <input type="text" name="text" value="Your text paragraph here. Para 2. Para 3."> -->
 
+              <!-- <input type="submit" class="submit-input" value="Submit!" /> -->
+          <!-- </div> -->
+      <!-- </form> -->
+
+      <form class="form-list" id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+          <p class="body-title"> Enter the Text Below! </p>
+          <div class="center">
+            <div>
+                <!-- <label id="label"for="team_name">Select Your Video! </label> -->
+                <div class="form-group">
+                <textarea type="text" name="text" class="text-area" id="label" value="Your text paragraph here. Para 2. Para 3."> </textarea>
+                  <!-- <label type="text-area" for="exampleFormControlTextarea1" id="label" name="text"> Enter the text here! </label> -->
+                  <!-- <textarea class="form-control rounded-0 text-area" id="exampleFormControlTextarea1" rows="10"></textarea> -->
+                </div>
+            </div class="buttons">
+              <!-- <input type="file" class="choose-file"accept=["video/*"] value="Select a Video!" /> -->
               <input type="submit" class="submit-input" value="Submit!" />
           </div>
-      </form>
+      </form> 
 
       <!-- <div class="output">
         <p id="output-label">Output:</p>
@@ -50,9 +66,9 @@
             <div class="table-header">Offense Scale (0:Low - 100: High)</div>
               {% for i in ids %}
                 <div class="white">{{ids[i]}}</div>
-                <div class={{ratings[i]}}>{{sentences[i]}}</div>
-                <div class={{ratings[i]}}>{{classes[i]}}</div>
-                <div class={{ratings[i]}}>{{ratings[i]}}</div>
+                <div class={{colours[i]}}>{{sentences[i]}}</div>
+                <div class={{colours[i]}}>{{classes[i]}}</div>
+                <div class={{colours[i]}}>{{ratings[i]}}</div>
             {% endfor %}
 
           </div>

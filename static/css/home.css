@@ -106,6 +106,12 @@ body {
     font-size: 16px;
 }
 
+.progress {
+    max-width: 1250px;
+    min-width: 150px;
+    margin: 0 auto;
+}
+
 .output-message {
     display: grid;
     grid-template-columns: 15% 45% 20% 20%;
@@ -114,6 +120,9 @@ body {
     border: 1px solid #606060;
     padding: 10px;
     font-family: 'Roboto', sans-serif;
+
+    max-width: 1250px;
+    margin: auto;
 }
 
 .label {
@@ -133,15 +142,17 @@ body {
     font-size: 15px;
 }
 
-#o-label {
-    text-align: left !important;  
+ #o-label {
+     font-size: 18px;
+     font-weight: 700;
 }
 
+/*
 .o-label-container {
     display: flex;
     justify-content: flex-start;  
     text-align: left !important;
-}
+} */
 
 .red {
     color: red !important;
@@ -203,5 +214,12 @@ body {
 
 .choose-file > input {
     background: #0098DA;
+}
 
+.text-area {
+    width: 100%;
+    max-width: 700px;
+    min-width: 100px;
+    height: 200px;
+    vertical-align: text-top;
 }
