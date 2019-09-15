@@ -3,13 +3,16 @@ from flask import request
 from flask import jsonify
 
 from hatesonar import Sonar
+import moviepy.editor as mp
+
 
 app = Flask(__name__)
 
-def youtube_video_to_audio(link):
+def video_to_audio(file_path):
     # link -> mp3 file and return the path to file
-    print("Converting YouTube video to audio: link = {}".format(link))
-    return None
+    print("Converting YouTube video to audio")
+    video = mp.VideoFileClip(file_path)
+    video.audio.write_audiofile("audio.wav", fps=16000, codec="pcm_s16le", ffmpeg_params=["-ac", "1"])
 
 
 def speech_to_text(file_path):
@@ -44,10 +47,7 @@ def hello():
 
 @app.route("/video")
 def process_video():
-    link = request.args.get('link')
-    print("Video request received: link = {}".format(link))
-    
-    file_path = youtube_video_to_audio(link)
+    file_path = video_to_audio("/path/to/file")
     texts = speech_to_text(file_path)
 
     # dummy text
