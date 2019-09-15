@@ -41,7 +41,7 @@ def speech_recognize_continuous_from_file(filename, speech_key, service_region):
     print(" ".join(filter((lambda sentences: sentences != ""), text)))
 
 if __name__ == '__main__':
-    filename = 'sample_speech.wav'
+    filename = 'sample.wav'
     speech_key = "604c4624ee7b4a4d8b2b3ae41b77b6e1"
     service_region = "canadacentral"
 
