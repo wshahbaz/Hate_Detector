@@ -16,16 +16,15 @@
   </div>
   <div class="body-container">
       
-      <form class="form-list" action="video-info" method="get">
+      <form class="form-list" id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
           <p class="body-title"> Link the File! </p>
           <div class="center">
             <div>
-                <label id="label"for="team_name">Enter Video Url: </label>
-                <input class="text-input" id="video_url" type="text" name="video_url_field" value="">
-            </div>
-              <input type="submit" class="submit-input" value="Submit Video!">
+                <label id="label"for="team_name">Select Your Video! </label>
+            </div class="buttons">
+              <input type="file" class="choose-file"accept=["video/*"] value="Select a Video!" />
+              <input type="submit" class="submit-input" value="Submit!" />
           </div>
-          
       </form>
 
       <!-- <div class="output">
@@ -37,7 +36,7 @@
         </div>
         <div class="progress">
             <div  class={{overall_rating}} role="progressbar" aria-valuenow={{percent_offensive}} aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-              {{overall_offensiveness}}%
+              {{overall_offensiveness}}/100
             </div>
           </div>
           <div class="output-message">
@@ -45,14 +44,13 @@
             <div class="table-header">Sentence</div>
             <div class="table-header">Offensiveness</div>
             <div class="table-header">Offense Scale (0:Low - 100: High)</div>
-              {% for i in range(numItems) %}
+              {% for i in ids %}
                 <div class="white">Sentence {{ids[i]}}</div>
                 <div class={{ratings[i]}}>{{sentences[i]}}</div>
                 <div class={{ratings[i]}}>{{names[i]}}</div>
                 <div class={{ratings[i]}}>{{values[i]}}</div>
             {% endfor %}
-            
-            </table>
+
           </div>
       </div>
       
