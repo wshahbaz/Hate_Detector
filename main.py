@@ -24,58 +24,38 @@ def upload():
 
     video_url = api_root + '/video'
 
+    text = request.form['text']
+    # print(text)
+
+    dictToSend = {'text': text}
     headers = {}
-    response = requests.get(video_url, headers=headers)
+    response = requests.post(video_url, headers=headers, json=dictToSend)
+    response = response.json()
 
     print(response)
 
-    # ids = response["results"]
-    
-    ids = map(lambda sentence : sentence["id"], response["results"])
+    results = response['results']
+
+    ids = [res['index'] for res in results]
+    sentences = [res['sentence'] for res in results]
+    colors = [res['rating'] for res in results]
+    classes = [res['top_class'] for res in results]
+    offensivess_scores = [res['offensivess_score'] for res in results]
+
+    overall_rating = sum(offensivess_scores) * 100 / len(offensivess_scores)
+    overall_rating = round(overall_rating, 2)
 
     return render_template(
         "home.html", 
-        overall_offensiveness = avg,
+        overall_offensiveness = overall_rating,
         ids = ids,
-        names = names,
-        values = values,
-        ratings = ratings,
-        numItems = numItems,
+        names = sentences,
+        classes = classes,
+        ratings = offensivess_scores,
+        numItems = len(ids),
         sentences = sentences,
         overall_rating = overall_rating
         )
-
-
-# https://hate-detector.azurewebsites.net/video
-
-
-    # data = {
-    #     "response": [
-    #         {
-    #             "id": 1,
-    #             "sentence": "Hello",
-    #             "name": "GOOD",
-    #             "value": 13,
-    #             "rating": "green"
-    #         },
-    #         {
-    #             "id": 2,
-    #             "sentence": "my name is",
-    #             "name": "MILDLY INFURIATING",
-    #             "value": 44,
-    #             "rating": "orange"
-    #         },
-    #         {
-    #             "id": 3,
-    #             "sentence": "Wais",
-    #             "name": "OFFENSIVE",
-    #             "value": 99,
-    #             "rating": "red"
-    #         }
-    #     ]
-    # }    #the response of the API call
-
-
 
     
     

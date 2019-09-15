@@ -23,7 +23,10 @@
                 <label id="label"for="team_name">Select Your Video! </label>
             </div class="buttons">
             
-              <input type="file" class="choose-file"accept=["video/*"] value="Select a Video!" />
+              <!-- <input type="file" class="choose-file"accept=["video/*"] value="Select a Video!" /> -->
+
+              <input type="text" name="text" value="Your text paragraph here. Para 2. Para 3.">
+
               <input type="submit" class="submit-input" value="Submit!" />
           </div>
       </form>
@@ -43,13 +46,13 @@
           <div class="output-message">
             <div class="table-header">Sentence Number (#)</div>
             <div class="table-header">Sentence</div>
-            <div class="table-header">Offensiveness</div>
+            <div class="table-header">Class</div>
             <div class="table-header">Offense Scale (0:Low - 100: High)</div>
               {% for i in ids %}
-                <div class="white">Sentence {{ids[i]}}</div>
+                <div class="white">{{ids[i]}}</div>
                 <div class={{ratings[i]}}>{{sentences[i]}}</div>
-                <div class={{ratings[i]}}>{{names[i]}}</div>
-                <div class={{ratings[i]}}>{{values[i]}}</div>
+                <div class={{ratings[i]}}>{{classes[i]}}</div>
+                <div class={{ratings[i]}}>{{ratings[i]}}</div>
             {% endfor %}
 
           </div>

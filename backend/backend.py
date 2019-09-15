@@ -77,7 +77,11 @@ def classify_texts(texts):
     for i, sentence in enumerate(texts):
         sentence_res = sonar.ping(text=sentence)
         top_class = sentence_res["top_class"]
-        sentence_output = {"index": i, "sentence": sentence, "top_class": top_class, "rating": rating_map[top_class]}
+        
+        classes_list = sentence_res["classes"]
+        offensivess_score = 0.5 * (classes_list[0]["confidence"] + classes_list[1]["confidence"])   # Average of hate_speech and offensive_language
+        
+        sentence_output = {"index": i, "sentence": sentence, "top_class": top_class, "rating": rating_map[top_class], "offensivess_score": offensivess_score}
         results.append(sentence_output)
 
     return results
@@ -92,7 +96,7 @@ def hello():
     return "Hello World!"
 
 
-@app.route("/video")
+@app.route("/video", methods=['POST', 'GET'])
 def process_video():
     """
     Extract audio -> audio to text -> text to classification -> send to front end
@@ -100,15 +104,22 @@ def process_video():
 
     # file_path = video_to_audio("/path/to/file")
     # texts = speech_to_text(file_path)
-    
-    texts = "Pedophiles are immature assholes. \
-            I still use Internet Explorer. \
-            I hope your baby’s retarded. \
-            Nicki Minaj is talented. \
-            At least I'm not a Jew."
+
+    input_json = request.get_json(force=True)
+    print(input_json)
+
+    text = input_json['text']
+    print(text)
+
     # perform classification
-    results = classify_texts(texts)
-    return jsonify(results=results)
+    results = classify_texts(text)
+    print(results)
+
+    json_res = jsonify(results=results)
+
+    print("results: \n\n")
+
+    return json_res
 
 
 if __name__ == '__main__':
