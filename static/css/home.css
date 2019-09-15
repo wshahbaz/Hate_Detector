@@ -56,7 +56,7 @@ body {
     /* background: #9cecfb;
     background: -webkit-linear-gradient(to bottom, #9cecfb, #65c7f7, #0052d4);
     background: linear-gradient(to bottom, #9cecfb, #65c7f7, #0052d4); */
-    background: linear-gradient( to top, #004275, #0098da) ;
+    background:  #0098DA;
 
     border-radius: 20px;
     padding: 10px;
@@ -176,4 +176,32 @@ body {
 .table-header {
     font-weight: 700;
     color: white;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: 50% 50%;
+
+}
+
+.choose-file {
+
+    width: 40%;
+    min-width: 100px;
+    margin: 15px auto;
+
+
+    font-size: 13px;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    width: fit-content;
+    padding: 10px 20px !important;
+    background: #0098DA;
+
+    border-radius: 20px;
+}
+
+.choose-file > input {
+    background: #0098DA;
+
 }
