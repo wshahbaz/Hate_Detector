@@ -14,19 +14,11 @@ There exists many scenarios and situations where people are abusing each other i
 
 ## What it does
 
-Our web app receives a text input, classified each sentence of the body of text with a natural language processing model in categories of "hate speech", "offensive language", and "neutral". The results are displayed in a table format under the text box. Each sentence has a color code associated with it to graphically display its degree of hate.
+Our web app receives a text input, classified each sentence of the body of text with a natural language processing model in categories of "hate speech", "offensive language", and "neutral". The results are displayed in a table format under the text box. Each sentence has a color code associated with it to graphically display its degree of hate/offensiveness.
 
 ## How we built it
 
-Using Django web framework and coding in python, we developed a web GUI that allows a user to input any size of tex, and once the data is processed, our GUI displays the results of each phrase in a friendly, colour coded table with numerical ranks and an overall "Hate" rank. To quantify the degree of hate in each separate body of text (sentences), we used the pre-trained NLP model sourced from "Automated Hate Speech Detection and the Problem of Offensive Language" research paper in 2017.
-
-## Challenges we ran into
-
-GUI and state implementations on the front end were very difficult as we had no prior experience in Django. There were multiple instances where we were stuck for hours trying to fix a state in the program.
-
-## Accomplishments that we're proud of
-
-We were able to integrate ML with a web app to solve a real world problem of significance.
+Using Django web framework and coding in python, we developed a web GUI that allows a user to input any size of text, and once the data is processed, our GUI displays the results of each phrase in a friendly, colour coded table with numerical ranks and an overall "Hate" rank. To quantify the degree of hate in each separate body of text (sentences), we used the pre-trained NLP model sourced from "Automated Hate Speech Detection and the Problem of Offensive Language" research paper in 2017.
 
 ## What's next for Verbal Abuse Detector
 
